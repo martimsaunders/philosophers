@@ -3,17 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: praders <praders@student.42.fr>            +#+  +:+       +#+         #
+#    By: mprazere <mprazere@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/21 16:34:39 by mprazere          #+#    #+#              #
-#    Updated: 2025/07/07 14:14:17 by praders          ###   ########.fr        #
+#    Updated: 2025/07/08 17:57:56 by mprazere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 PHILO_A = libphilo.a
 
-SRCS = #srcs/ srcs/ srcs/ srcs/  \
+SRCS = srcs/philo.c srcs/p_utils.c srcs/p_parsing.c srcs/p_clear.c \
+srcs/p_initialization.c srcs/p_simulation.c srcs/p_monitoring.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -28,7 +29,7 @@ $(PHILO_A): $(OBJS)
 	@echo 'Biblioteca libphilo.a criada!'
 
 $(NAME): $(OBJS) $(MAIN)
-	@$(CC) $(CFLAGS) $(OBJS) -lft -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(PHILO_A) -o $(NAME)
 	@echo 'philo compilado!'
 
 clean:
