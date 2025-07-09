@@ -6,22 +6,11 @@
 /*   By: mprazere <mprazere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:14:43 by praders           #+#    #+#             */
-/*   Updated: 2025/07/08 16:07:30 by mprazere         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:20:22 by mprazere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-/* static void prints(t_data *data)
-{
-	printf("Num philos: %d\n", data->num_philos);
-	printf("Time to die: %d\n", data->time_to_die);
-	printf("Time to eat %d\n", data->time_to_eat);
-	printf("Time to sleep %d\n", data->time_to_sleep);
-	printf("Meals to eat %d\n", data->meals_to_eat);
-	printf("Simulation: %d\n", data->simulation_stop);
-	printf("Start time: %lld\n", data->start_time);
-} */
 
 int	main(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: mprazere <mprazere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:21:22 by mprazere          #+#    #+#             */
-/*   Updated: 2025/07/08 13:37:10 by mprazere         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:21:31 by mprazere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static bool	check_string(char *s1)
 		while (s1[i] >= '0' && s1[i] <= '9')
 			i++;
 		if (s1[i] && s1[i] != ' ' && (s1[i] < 9 || s1[i] > 13))
-    		return (printf("Only numbers are allowed"), false);
+			return (printf("Only numbers are allowed"), false);
 	}
 	return (true);
 }

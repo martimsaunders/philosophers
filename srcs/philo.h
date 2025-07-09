@@ -6,7 +6,7 @@
 /*   By: mprazere <mprazere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:15:38 by praders           #+#    #+#             */
-/*   Updated: 2025/07/08 17:49:20 by mprazere         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:00:16 by mprazere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ bool				start_simulation(t_data *data);
 bool				initialize_philosophers(t_data *data);
 bool				str_prot(int argc, char **argv);
 bool				check_zero_values(int argc, char **argv, t_data *data);
+int					ft_strncmp(const char *s1, const char *s2);
 long				ft_atol(const char *nptr);
 long long			get_current_time(void);
 void				*monitor_routine(void *arg);

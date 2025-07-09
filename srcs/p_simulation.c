@@ -6,7 +6,7 @@
 /*   By: mprazere <mprazere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 15:46:05 by mprazere          #+#    #+#             */
-/*   Updated: 2025/07/08 18:23:36 by mprazere         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:20:44 by mprazere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static void	eat_philo(t_philo *philo)
 	pthread_mutex_lock(&philo->data->meal_mutex);
 	philo->last_meal_time = get_current_time();
 	philo->meals_eaten++;
-	if (philo->data->meals_to_eat > 0 && philo->meals_eaten == philo->data->meals_to_eat)
+	if (philo->data->meals_to_eat > 0
+		&& philo->meals_eaten == philo->data->meals_to_eat)
 		philo->full = true;
 	pthread_mutex_unlock(&philo->data->meal_mutex);
 	usleep(philo->data->time_to_eat * 1000);
@@ -41,17 +42,18 @@ static void	think_philo(t_philo *philo)
 	long long	time_to_think;
 
 	print_action(philo, THINKING);
-	time_to_think = (philo->data->time_to_die - (philo->data->time_to_eat + philo->data->time_to_sleep)) / 2;
+	time_to_think = (philo->data->time_to_die - (philo->data->time_to_eat
+				+ philo->data->time_to_sleep)) / 2;
 	if (time_to_think < 0)
 		time_to_think = 0;
 	usleep(time_to_think * 1000);
 }
 
-static	void	*philosopher_routine(void *arg)
+static void	*philosopher_routine(void *arg)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
-	philo = (t_philo *) arg;
+	philo = (t_philo *)arg;
 	if (philo->data->num_philos == 1)
 	{
 		print_action(philo, FORK_TAKEN);
@@ -60,7 +62,7 @@ static	void	*philosopher_routine(void *arg)
 	}
 	if (philo->id % 2 == 0)
 		usleep(1000);
-	while(sim_stop(philo->data) == false)
+	while (sim_stop(philo->data) == false)
 	{
 		eat_philo(philo);
 		sleep_philo(philo);
@@ -71,7 +73,7 @@ static	void	*philosopher_routine(void *arg)
 
 bool	start_simulation(t_data *data)
 {
-	int i;
+	int	i;
 
 	data->start_time = get_current_time();
 	i = -1;
