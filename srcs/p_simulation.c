@@ -6,7 +6,7 @@
 /*   By: mprazere <mprazere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 15:46:05 by mprazere          #+#    #+#             */
-/*   Updated: 2025/07/09 11:20:44 by mprazere         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:18:20 by mprazere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,19 @@
 
 static void	eat_philo(t_philo *philo)
 {
-	pthread_mutex_lock(philo->left_fork);
+	if (philo->left_fork < philo->right_fork)
+	{
+		philo->first_fork = philo->left_fork;
+		philo->second_fork = philo->right_fork;
+	}
+	else
+	{
+		philo->first_fork = philo->right_fork;
+		philo->second_fork = philo->left_fork;
+	}
+	pthread_mutex_lock(philo->first_fork);
 	print_action(philo, FORK_TAKEN);
-	pthread_mutex_lock(philo->right_fork);
+	pthread_mutex_lock(philo->second_fork);
 	print_action(philo, FORK_TAKEN);
 	print_action(philo, EATING);
 	pthread_mutex_lock(&philo->data->meal_mutex);
@@ -27,8 +37,8 @@ static void	eat_philo(t_philo *philo)
 		philo->full = true;
 	pthread_mutex_unlock(&philo->data->meal_mutex);
 	usleep(philo->data->time_to_eat * 1000);
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
+	pthread_mutex_unlock(philo->first_fork);
+	pthread_mutex_unlock(philo->second_fork);
 }
 
 static void	sleep_philo(t_philo *philo)

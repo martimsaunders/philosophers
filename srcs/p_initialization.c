@@ -6,7 +6,7 @@
 /*   By: mprazere <mprazere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 15:13:27 by mprazere          #+#    #+#             */
-/*   Updated: 2025/07/09 11:22:08 by mprazere         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:16:32 by mprazere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ bool	initialize_philosophers(t_data *data)
 		data->philosophers[i].left_fork = &data->forks[i];
 		data->philosophers[i].right_fork = &data->forks[(i + 1)
 			% data->num_philos];
+		data->philosophers[i].first_fork = 0;
+		data->philosophers[i].second_fork = 0;
 	}
 	return (true);
 }

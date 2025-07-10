@@ -6,7 +6,7 @@
 /*   By: mprazere <mprazere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:15:38 by praders           #+#    #+#             */
-/*   Updated: 2025/07/09 11:00:16 by mprazere         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:14:21 by mprazere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_philo
 	bool			full;
 	long long		last_meal_time;
 	pthread_t		thread;
+	pthread_mutex_t	*first_fork;
+	pthread_mutex_t	*second_fork;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	struct s_data	*data;
@@ -67,7 +69,7 @@ bool				start_simulation(t_data *data);
 bool				initialize_philosophers(t_data *data);
 bool				str_prot(int argc, char **argv);
 bool				check_zero_values(int argc, char **argv, t_data *data);
-int					ft_strncmp(const char *s1, const char *s2);
+int					ft_strcmp(const char *s1, const char *s2);
 long				ft_atol(const char *nptr);
 long long			get_current_time(void);
 void				*monitor_routine(void *arg);
