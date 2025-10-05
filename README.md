@@ -31,6 +31,11 @@ This will generate the executable:
 ./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
 ./philo 5 800 200 200
 ```
+
+<p align="center">
+  <img src="gif/philovideo.gif" alt="" width="1020">
+</p>
+
 ### Parameters
 - `number_of_philosophers` → total philosophers
 - `time_to_die` → maximum time (ms) a philosopher can go without eating
